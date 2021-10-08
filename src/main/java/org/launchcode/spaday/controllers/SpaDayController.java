@@ -12,14 +12,11 @@ public class SpaDayController {
     public boolean checkSkinType(String skinType, String facialType) {
         if (skinType.equals("oily")) {
             return facialType.equals("Microdermabrasion") || facialType.equals("Rejuvenating");
-        }
-        else if (skinType.equals("combination")) {
+        } else if (skinType.equals("combination")) {
             return facialType.equals("Microdermabrasion") || facialType.equals("Rejuvenating") || facialType.equals("Enzyme Peel");
-        }
-        else if (skinType.equals("dry")) {
+        } else if (skinType.equals("dry")) {
             return facialType.equals("Rejuvenating") || facialType.equals("Hydrofacial");
-        }
-        else {
+        } else {
             return true;
         }
     }
@@ -27,7 +24,7 @@ public class SpaDayController {
     @GetMapping(value="")
     @ResponseBody
     public String customerForm () {
-        String html = "<form method = 'post'>" +
+        return "<form method = 'post'>" +
                 "Name: <br>" +
                 "<input type = 'text' name = 'name'>" +
                 "<br>Skin type: <br>" +
@@ -44,7 +41,6 @@ public class SpaDayController {
                 "</select><br>" +
                 "<input type = 'submit' value = 'Submit'>" +
                 "</form>";
-        return html;
     }
 
     @PostMapping(value="")
@@ -63,6 +59,10 @@ public class SpaDayController {
             }
         }
 
+        model.addAttribute("name", name);
+        model.addAttribute("skintype", skintype);
+        model.addAttribute("manipedi", manipedi);
+        model.addAttribute("facials", appropriateFacials);
         return "menu";
     }
 }
