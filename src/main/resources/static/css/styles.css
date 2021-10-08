@@ -1,4 +1,5 @@
 body {
+    margin: 0;
     background-color: pink;
 }
 
@@ -23,4 +24,37 @@ table {
             width: 50%;
             padding: 10px;
             text-align: center;
+}
+
+footer {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.footerSquare {
+    width: 20%;
+    height: 20px;
+}
+
+#red {
+    background-color: red;
+}
+
+#blue {
+    background-color: blue;
+}
+
+#green {
+    background-color: green;
+}
+
+#yellow {
+    background-color: yellow;
+}
+
+#black {
+    background-color: black;
 }
