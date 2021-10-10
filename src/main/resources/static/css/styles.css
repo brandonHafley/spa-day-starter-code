@@ -24,3 +24,11 @@ table {
             padding: 10px;
             text-align: center;
 }
+
+li {
+    list-style: none;
+}
+
+.displayUserData {
+    display: flex;
+}

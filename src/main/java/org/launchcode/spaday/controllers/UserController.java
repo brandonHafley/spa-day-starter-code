@@ -1,5 +1,6 @@
 package org.launchcode.spaday.controllers;
 
+import org.launchcode.spaday.data.UserData;
 import org.launchcode.spaday.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,9 @@ public class UserController {
         model.addAttribute("verify", verify);
         model.addAttribute("username", user.getUsername());
         model.addAttribute("email", user.getEmail());
+        model.addAttribute("listOfUsers", UserData.getAll());
         if (user.getPassword().equals(verify)) {
+           UserData.add(user);
            return "user/index";
         }
         else {
@@ -30,5 +33,13 @@ public class UserController {
 
     }
 
+    @GetMapping("userDetails")
+    public String displayUserDetails(Model model, @RequestParam("userId") int userId) {
+        User userToDisplay = UserData.getById(userId);
+        model.addAttribute("username", userToDisplay.getUsername());
+        model.addAttribute("email", userToDisplay.getEmail());
+        model.addAttribute("dateJoined", userToDisplay.getDateJoined());
+        return "user/userDetails";
+    }
 
 }

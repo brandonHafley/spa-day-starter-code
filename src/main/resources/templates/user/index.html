@@ -10,5 +10,15 @@
     <a th:href="@{/}">
         Select your spa services here
     </a>
+
+    <div>
+        <h2>List of All Users</h2>
+        <ul>
+            <li th:each="user : ${listOfUsers}">
+                <a th:href="@{user/userDetails(userId=${user.id})}"><p th:text="${user.username}"></p></a>
+            </li>
+        </ul>
+    </div>
+
 </body>
 </html>
